@@ -143,6 +143,8 @@
 #130728 always try to copy sfs to ram if >=700MB.
 #140102 better font for Russian, font is added to /lib/consolefont (in rootfs-skeleton)
 #140102 rodin.s: added utf8-option to VFAT_OUT_PARAM for flash drive to be mounted with utf-8 if boot is done from flash drive 
+#170619 saintless: changes for DebianDog and booting Puppy with Debian kernel for creating entry in /etc/rc.d/PUPSTATE Search for DebianDog comments below.
+#                  source: https://github.com/MintPup/DebianDog-Wheezy/tree/master/puppy-boot
 
 #Aufs layers setup by this script...
 #aufs layers:            RW (top)      RO1             RO2              PUPMODE
@@ -817,6 +819,12 @@ export TZ='XXX-23' #100318 imaginary place right around the world east of Greenw
 #ref: http://www.gnu.org/s/libc/manual/html_node/TZ-Variable.html
 #100427 crap, despite the help inside the hwclock applet, it doesn't accept long-options...
 /bin/hwclock -s -l #set system time (based on hw clock set to local time).
+
+################################## Changes for DebianDog start (loading Debian kernel modules): thanks to sfs from http://forum.puppyrus.org/ ######################################
+cd /lib/modules/$(uname -r)
+echo "loading kernel modules..."
+modprobe -a mbcache aufs exportfs ext4 fat vfat fuse isofs nls_cp437 nls_iso8859-1 nls_utf8 reiserfs squashfs xfs libata ahci libahci sata_sil24 pdc_adma sata_qstor sata_sx4 ata_piix sata_mv sata_nv sata_promise sata_sil sata_sis sata_svw sata_uli sata_via sata_vsc pata_ali pata_amd pata_artop pata_atiixp pata_atp867x pata_cmd64x pata_cs5520 pata_cs5530 pata_cs5535 pata_cs5536 pata_efar pata_hpt366 pata_hpt37x pata_it8213 pata_it821x pata_jmicron pata_marvell pata_netcell pata_ns87415 pata_oldpiix pata_pdc2027x pata_pdc202xx_old pata_rdc pata_sc1200 pata_sch pata_serverworks pata_sil680 pata_sis pata_triflex pata_via pata_isapnp pata_mpiix pata_ns87410 pata_opti pata_rz1000 ata_generic loop cdrom hid usbhid mptscsih mptspi mptsas tifm_core cb710 mmc_block mmc_core sdhci sdhci-pci wbsd tifm_sd cb710-mmc via-sdmmc vub300 sdhci-pltfm scsi_mod scsi_transport_spi scsi_transport_sas sd_mod sr_mod usb-common usbcore ehci-hcd ehci-pci ohci-hcd uhci-hcd xhci-hcd usb-storage hid_generic xts
+################################## Changes for DebianDog end. ######################################
 
 #does this initrd have all the zdrv components inside it?...
 ZDRVINIT='no'
@@ -1521,8 +1529,8 @@ if [ "$ZDRVINIT" = "yes" ];then
  if [ "$REASON" != "" ];then
   [ -d /pup_rw/lib/modules ] && rm -rf /pup_rw/lib/modules
   [ -d /pup_ro1/lib/modules ] && rm -rf /pup_ro1/lib/modules
-  mkdir -p /pup_rw/lib
-  mv /lib/modules /pup_rw/lib/
+  #mkdir -p /pup_rw/lib #Changes for DebianDog. Skip this step. No need from duplicated kernel modules in pup_rw.
+  #mv /lib/modules /pup_rw/lib/ #Changes for DebianDog. Skip this step.
   mkdir -p /pup_rw/initrd
   cp -af /DISTRO_SPECS /pup_rw/initrd/
   cp -af /init /pup_rw/initrd/
@@ -1607,7 +1615,10 @@ zPSUBDIR=''
 #/etc/PUPSTATE passes useful variables to the running puppy...
 mkdir -p /pup_rw/etc/rc.d
 echo "PUPMODE=$PUPMODE" > /pup_rw/etc/rc.d/PUPSTATE
-echo "PDEV1='$PDEV1'" >> /pup_rw/etc/rc.d/PUPSTATE
+#echo "PDEV1='$PDEV1'" >> /pup_rw/etc/rc.d/PUPSTATE
+echo "PDEV1='$(echo $PUPSFS | cut -s -f1 -d',')'">> /pup_rw/etc/rc.d/PUPSTATE #changes for DebianDog and Puppy with Debian kernel 20170619
+#echo "DEV1FS='$DEV1FS'" >> /pup_rw/etc/rc.d/PUPSTATE
+echo "PDEV1FS='$(echo $PUPSFS | cut -s -f2 -d',')'">> /pup_rw/etc/rc.d/PUPSTATE #changes for DebianDog and Puppy with Debian kernel 20170619
 echo "DEV1FS='$DEV1FS'" >> /pup_rw/etc/rc.d/PUPSTATE
 echo "PUPSFS='$PUPSFS'" >> /pup_rw/etc/rc.d/PUPSTATE
 echo "PUPSAVE='$PUPSAVE'" >> /pup_rw/etc/rc.d/PUPSTATE
