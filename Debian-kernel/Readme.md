@@ -12,5 +12,11 @@ the contributors there are much better experts.
 But I will show you how to boot any existing Puppy linux distro using official kernel from Debian-Jessie. Easy to make this
 procedure work with any other kernel. All needed is [small mdification in the init script](https://github.com/MintPup/Puppy-Linux/commit/d3dc7735692830e9ed9590893aff7a2efb9bbac9) and including the kernel modules from official Debian initrd.img in Puppy initrd.gz
 
+In the next few days I will explain the steps and I will upload [example kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0) for testing,
 
 
+![puduan-6.0.0](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/puduan-6.0.0.jpg?raw=true)
+
+![dpup-wheezy](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/dpup-wheezy.jpg?raw=true)
+
+![saluki](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/saluki.jpg?raw=true)
