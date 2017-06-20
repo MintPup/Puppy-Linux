@@ -12,7 +12,7 @@ the contributors there are much better experts.
 But I will show you how to boot any existing Puppy linux distro using official kernel from Debian-Jessie. Easy to make this
 procedure work with any other kernel. All needed is [small modification in the init script](https://github.com/MintPup/Puppy-Linux/commit/d3dc7735692830e9ed9590893aff7a2efb9bbac9) and including the kernel modules from official Debian initrd.img in Puppy initrd.gz
 
-In the next few days I will explain the steps and I will upload [example kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0) for testing.
+In the next few days I will explain the steps and I will upload [example kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0) for testing. The screenshots bellow show this same module working well on different Puppy systems.
 
 Puppy linux is unique system (for good or bad). It has special DISTRO_SPECS file inside initrd.gz. This file gives unique names for main squashfs (sfs) module and extra sfs modules like adrv, zdrv, ydrv, fdrv. This makes almost impossible to use the same module on different Puppy without renaming or symlinking the modules according to its own DISTRO_SPECS file. This file makes the procedure I like to explain difficult for new users so experience with frugall installed Puppy linux is a must.
 
