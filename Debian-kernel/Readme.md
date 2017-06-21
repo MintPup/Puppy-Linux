@@ -51,6 +51,28 @@ initrd /PUDUAN/initrd.gz
 
 ![puduan-6.0.0](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/puduan-6.0.0.jpg?raw=true)
 
+If you have already frugal installed [Dpup-Wheezy](http://murga-linux.com/puppy/viewtopic.php?search_id=121836883&t=80546&sid=834e840c23b67e5e35fd7055f5172b69) you will have the following files in your Puppy directory:
+
+**puppy_wheezy_3.5.2.11.sfs** - the main system module. Including the Puppy kernel inside.
+
+**initrd.gz** - will be replaced with Debian one.
+
+**vmlinuz** - will be replaced with Debian one.
+
+Download and extract the archive with [Debian-Jessie kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0).
+
+Remove or rename theese files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
+
+Example boot code if your files are in directory DPUP on sda1 (HDD partition):
+
+```
+title Dpup-Wheezy
+root (hd0,0)
+kernel /DPUP/vmlinuz pmedia=hdd psubdir=DPUP
+initrd /DPUP/initrd.gz
+```
+It will start with message Puduan at first boot and use puduansave file name because we use the DISTRO_SPECS file from Puduan initrd.gz
+
 ![dpup-wheezy](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/dpup-wheezy.jpg?raw=true)
 
 ![saluki](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/saluki.jpg?raw=true)
