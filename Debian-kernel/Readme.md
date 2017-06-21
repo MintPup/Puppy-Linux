@@ -113,3 +113,12 @@ initrd /LUKI/initrd.gz
 It will start with message Puduan at first boot and use puduansave file name because we use the DISTRO_SPECS file from Puduan initrd.gz
 
 ![saluki](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/saluki.jpg?raw=true)
+
+
+***
+
+**This experiment ends here for me.**
+
+If you can find something useful I'm glad. 
+
+I will explain later [here](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/change-kernel.md) how to update/change the kernel inside [Debian-Jessie kernel archive](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0) and how to rebuild the DEVX module with the new kernel headers.
