@@ -18,6 +18,22 @@ Puppy linux is unique system (for good or bad). It has special DISTRO_SPECS file
 
 I started with the init script from [Puduan-6.0.0-wmx-alpha1a](http://murga-linux.com/puppy/viewtopic.php?t=107913&sid=834e840c23b67e5e35fd7055f5172b69). Don't take alpha as not yet ready. The system works well and stable and what I actually took from there is only the init script. For my needs it is quite current build from woof-ce and because of musher0's [words of encouragement](http://murga-linux.com/puppy/viewtopic.php?p=957866&sid=834e840c23b67e5e35fd7055f5172b69#957866). Luckily this puppy was complex enough (having included adrv, ydrv, fdrv, zdrv module) to give me the universal solution how to use the same module in any new or old Puppy.
 
+Let's start:
+If you have already frugal installed [Puduan-6.0.0-wmx-alpha1a](http://murga-linux.com/puppy/viewtopic.php?t=107913&sid=834e840c23b67e5e35fd7055f5172b69) you will have the following files in your Puppy directory:
+
+**adrv_puduan_6.0.0.sfs**
+
+**fdrv_puduan_6.0.0.sfs** - includes mplayer and mencoder (we will replace this sfs with Debian kernel sfs with the same name. You can load mplayer and mencoder on the fly after booting the system).
+
+**puppy_puduan_6.0.0.sfs** - the main system module.
+
+**ydrv_puduan_6.0.0.sfs**
+
+**zdrv_puduan_6.0.0.sfs** - the Puppy kernel (it will not be loaded/ignored after using the new initrd.gz)
+
+**initrd.gz** - will be replaced with Debian one.
+
+**vmlinuz** - will be replaced with Debian one.
 
 ![puduan-6.0.0](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/puduan-6.0.0.jpg?raw=true)
 
