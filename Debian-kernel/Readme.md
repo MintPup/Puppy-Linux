@@ -63,6 +63,10 @@ Download and extract the archive with [Debian-Jessie kernel module](https://gith
 
 Remove or rename theese files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
 
+Then rename:
+
+**puppy_wheezy_3.5.2.11.sfs**    ->    **puppy_puduan_6.0.0.sfs**
+
 Example boot code if your files are in directory DPUP on sda1 (HDD partition):
 
 ```
@@ -74,5 +78,38 @@ initrd /DPUP/initrd.gz
 It will start with message Puduan at first boot and use puduansave file name because we use the DISTRO_SPECS file from Puduan initrd.gz
 
 ![dpup-wheezy](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/dpup-wheezy.jpg?raw=true)
+
+If you have already frugal installed [luki-022.iso](http://murga-linux.com/puppy/viewtopic.php?search_id=989614253&t=73687&sid=834e840c23b67e5e35fd7055f5172b69) you will have the following files in your Puppy directory:
+
+**adrv_luki_022.sfs**
+
+**puppy_luki_022.sfs** - the main system module.
+
+**zdrv_luki_022.sfs** - the Puppy kernel (it will not be loaded/ignored after using the new initrd.gz)
+
+**initrd.gz** - will be replaced with Debian one.
+
+**vmlinuz** - will be replaced with Debian one.
+
+Now download and extract the archive with [Debian-Jessie kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0).
+
+Remove or rename theese files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
+
+Then rename:
+
+**adrv_luki_022.sfs**    ->    **adrv_puduan_6.0.0.sfs**
+
+**puppy_luki_022.sfs**    ->    **puppy_puduan_6.0.0.sfs**
+
+Example boot code if your files are in directory LUKI on sda1 (HDD partition):
+
+```
+title Saluki
+root (hd0,0)
+kernel /LUKI/vmlinuz pmedia=hdd psubdir=LUKI
+initrd /LUKI/initrd.gz
+```
+
+It will start with message Puduan at first boot and use puduansave file name because we use the DISTRO_SPECS file from Puduan initrd.gz
 
 ![saluki](https://github.com/MintPup/Puppy-Linux/blob/master/Debian-kernel/saluki.jpg?raw=true)
