@@ -38,7 +38,7 @@ If you have already frugal installed [Puduan-6.0.0-wmx-alpha1a](http://murga-lin
 
 Now download and extract the archive with [Debian-Jessie kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0).
 
-Remove or rename theese files from the Puppy directory: **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz**. And move/copy the same nemed files from the Debian kernel archive to replace them.
+Remove or rename the files from the Puppy directory: **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz**. And move/copy the same nemed files from the Debian kernel archive to replace them.
 
 Example boot code if your files are in directory PUDUAN on sda1 (HDD partition):
 
@@ -61,7 +61,7 @@ If you have already frugal installed [Dpup-Wheezy](http://murga-linux.com/puppy/
 
 Download and extract the archive with [Debian-Jessie kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0).
 
-Remove or rename theese files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
+Remove or rename the files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
 
 Then rename:
 
@@ -93,7 +93,7 @@ If you have already frugal installed [luki-022.iso](http://murga-linux.com/puppy
 
 Now download and extract the archive with [Debian-Jessie kernel module](https://github.com/MintPup/Puppy-Linux/releases/tag/v.1.0).
 
-Remove or rename theese files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
+Remove or rename the files from the Puppy directory: **initrd.gz**, **vmlinuz**. And move/copy there **fdrv_puduan_6.0.0.sfs**, **initrd.gz**, **vmlinuz** from the Debian kernel archive.
 
 Then rename:
 
@@ -116,6 +116,8 @@ It will start with message Puduan at first boot and use puduansave file name bec
 
 
 ***
+
+Someone already have noticed the modprobe line in the init script doesn't need to load so many kernel drivers and could be shorter. This will also reduce a little the boot process and the idle memory usage after boot. The included kernel drivers in initrd.gz can be only those listed in the modprobe line instead all generated with live-boot update-initramfs command. This will make the initrd.gz size much smaller.
 
 **This experiment ends here for me.**
 
